@@ -1,0 +1,30 @@
+# Middleware: Executed before a callback function in a get request if passed as parameter.
+
+# Context Api's are used for global state Management.
+it has 3 main things :
+
+1.createContext-->creates context.
+
+2.useContext-->accepts argument of required context and returns action.
+
+3.useReducer-->similar to useState-->takes two arguments 'reducer function' and 'initial state'.
+     |                                                           |-->takes two arguments 'state' and 'action'.
+     |-->returns array of two items state and dispatch. 
+                                                  |
+                                                  |-->takes action which is js object with two arguments 'type' and 'payload'.        
+
+# with help of <Link to= path> </Link> we can render different components mentioned in path.
+
+# App is the first component React encounters since it's what we send to ReactDOM.render.
+
+# When a state changes react will re-render its components.
+
+# First "render" is going to lead to React "mounting" stuff to the DOM, and re-renders just update the DOM but don't mount since mounting just happens once.
+
+# A child component can only be mounted and renderd if its parent component is mounted.
+
+# If parent component is re-rendered it also renders it's child component.
+
+# In local storage only string can be stored hence objects need to stringify.
+
+# While production we dont have 2 different servers for backend and frontend hence we do not have a proxy server.
