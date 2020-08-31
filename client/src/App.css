@@ -87,9 +87,9 @@ a {
   }
   
   .sub-content {
-    width: 320px;
+    width: 96%;
     height: 40%;
-    margin: 60px auto 0;
+    margin: 85px auto 0;
     border: 1px solid #e6e6e6;
     padding: 20px 50px;
     background-color: #fff;
@@ -154,4 +154,10 @@ a {
   .input-field input[type=password]:focus {
     border-bottom: 1px solid rgb(8, 93, 252) !important;
     box-shadow: 0 1px 0 0 rgb(8, 93, 252)  !important;
+  }
+
+  /* search */
+
+  .collection-item {
+    width: 100%;
   }

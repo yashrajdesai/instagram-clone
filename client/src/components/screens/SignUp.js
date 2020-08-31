@@ -51,7 +51,7 @@ const SignUp = ()=> {
             })
         }).then(res=>res.json())
         .then(data=>{
-            console.log(data);
+          
             if(data.error) {
                 M.toast({html: data.error,classes:"#d32f2f red darken-2"})
             }else {
@@ -110,10 +110,12 @@ const SignUp = ()=> {
             Already have an account?  <Link style={{color:"blue"}} to="./login">Login</Link>
             </div>
             </div>
+           
+        </div>
         </div>
         
         </div>
-        </div>
+             
     );
 }
 

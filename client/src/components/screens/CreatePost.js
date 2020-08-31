@@ -81,16 +81,18 @@ const CreatePost = ()=> {
              />
            <div className="file-field input-field">
             <div className="btn #64b5f6 blue darken-1" style={{width:"30%"}}>
-                <span>Upload Image</span>
+                <span>Upload</span>
                 <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
             </div>
-            <div className="file-path-wrapper">
+            <div className="file-path-wrapper" style={{paddingTop:"20px"}}>
                 <input className="file-path validate" type="text" />
             </div>
             </div>
             <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
             onClick={()=>postDetails()}
-            
+            style={{height: "45px",
+            width: "166px",
+            marginLeft: "145px"}}
             >
                 Submit post
             </button>

@@ -4,6 +4,7 @@ const mongoose= require('mongoose');
 const requireLogin = require('../middleware/requireLogin');
 const Post = mongoose.model('Post');
 
+
 router.get('/mypost',requireLogin,(req,res)=>{
     Post.find({postedBy:req.user._id})
     .populate("postedBy","_id name")
@@ -17,6 +18,7 @@ router.get('/allposts',requireLogin,(req,res)=>{
     Post.find()
     .populate("postedBy","name _id")
     .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
     .then(posts=>{
         res.json({posts});
     })
@@ -29,6 +31,7 @@ router.get('/getsubpost',requireLogin,(req,res)=>{
     Post.find({postedBy:{$in:req.user.following}})      //if posts are of people only of whom i am following.
     .populate("postedBy","name _id")
     .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
     .then(posts=>{
         res.json({posts});
     })
@@ -113,24 +116,24 @@ router.put('/comment',requireLogin,(req,res)=>{
 })
 
 
-router.delete('/deletepost/:postId',requireLogin,(req,res)=>{
-    Post.findOne({_id:req.params.postId})
-    .populate("postedBy","_id")
-    .exec((err,post)=>{
-        if(err || !post) {
-           return res.status(422).json({error:err})
-        }
-        if(post.postedBy._id.toString()===req.user._id.toString()) {
-            post.remove()
-            .then(result=>{
-                res.json(result);
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-        }
-    })
-})
+// router.delete('/deletepost/:postId',requireLogin,(req,res)=>{
+//     Post.findOne({_id:req.params.postId})
+//     .populate("postedBy","_id")
+//     .exec((err,post)=>{
+//         if(err || !post) {
+//            return res.status(422).json({error:err})
+//         }
+//         if(post.postedBy._id.toString()===req.user._id.toString()) {
+//             post.remove()
+//             .then(result=>{
+//                 res.json(result);
+//             })
+//             .catch(err=>{
+//                 console.log(err);
+//             })
+//         }
+//     })
+// })
 
 router.put('/deletecomment/:id',requireLogin,(req,res)=>{
    
@@ -150,6 +153,7 @@ router.put('/deletecomment/:id',requireLogin,(req,res)=>{
         }
     })
 })
+
 
 
 module.exports = router;

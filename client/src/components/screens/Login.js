@@ -21,6 +21,7 @@ const Login = ()=> {
             })
         }).then(res=>res.json())
         .then(data=>{
+           
             if(data.error) {
                 M.toast({html: data.error,classes:"#d32f2f red darken-2"})
             }else {
@@ -53,7 +54,7 @@ const Login = ()=> {
                 }} />
                 <a href="#">Forgot?</a>
             </div>
-            <input style={{marginTop:"50px"}} type="button" value="Log in" className="btn" onClick={()=>postData()} />
+            <input style={{marginTop:"50px",height:"40px"}} type="button" value="Log in" className="btn" onClick={()=>postData()} />
             </div>
             <div className="sub-content">
             <div className="s-part">

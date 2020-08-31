@@ -57,7 +57,6 @@ const Home = ()=> {
         })
         .then(res=>res.json())
         .then(result=>{
-            console.log(result);
             const newData = data.map(item=>{            //This id to re-render a page when a post like/unlike is updated.
                 if(item._id===result._id) {             //Checks which post is updated and returns updated posts in new data.
                     return result;
@@ -114,29 +113,31 @@ const Home = ()=> {
         })               
     } 
     
-    const deleteComment = (commentId,postId) => {
-        fetch(`/deletecomment/${commentId}`,{
-            method:"put",
-            headers:{
-                "Authorization":"Bearer "+localStorage.getItem("jwt"),
-                "Content-Type": "application/json"
-            },
-            body:JSON.stringify({
-                postId
-            })
-        })
-        .then(res=>res.json())
-        .then(result=>{
-            const newData = data.map(item=>{            //This id to re-render a page when a post like/unlike is updated.
-                if(item._id===result._id) {             //Checks which post is updated and returns updated posts in new data.
-                    return result;
-                }else {
-                    return item;
-                }
-            })
-            setData(newData) 
-        })
-    }
+    // const deleteComment = (commentId,postId) => {
+    //     fetch(`/deletecomment/${commentId}`,{
+    //         method:"put",
+    //         headers:{
+    //             "Authorization":"Bearer "+localStorage.getItem("jwt"),
+    //             "Content-Type": "application/json"
+    //         },
+    //         body:JSON.stringify({
+    //             postId
+    //         })
+    //     })
+    //     .then(res=>res.json())
+    //     .then(result=>{
+    //         const newData = data.map(item=>{          //This id to re-render a page when a post like/unlike is updated.
+    //             console.log(item);
+        
+    //             if(item._id===result._id) {             //Checks which post is updated and returns updated posts in new data.
+    //                 return result;
+    //             }else {
+    //                 return item;
+    //             }
+    //         })
+    //         setData(newData) 
+    //     })
+    // }
 
     return (
         data.map(item=>{    //maps all the data from dB with the card style.
@@ -163,9 +164,6 @@ const Home = ()=> {
                     item.comments.map(record=>{
                         return (
                             <h6 key={record._id}><span style={{fontWeight:"500"}}>{record.postedBy.name}</span> {record.text}
-                            {state._id ===record.postedBy._id
-                                 && <i className="material-icons" style={{float:"right"}} onClick={()=>{deleteComment(record._id,item._id)}}>delete</i>
-                            }
                         </h6>
                         )
                     })

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT||5000 ;
 const {MONGOURI} = require('./config/keys');
 const mongoose = require('mongoose');
 
@@ -36,5 +36,5 @@ if(process.env.NODE_ENV=="production") {      //On production side we are deploy
 }
 
 app.listen(PORT,()=>{
-    console.log("Sever running on port",5000);
+    console.log("Sever running on port",PORT);
 })
