@@ -116,43 +116,43 @@ router.put('/comment',requireLogin,(req,res)=>{
 })
 
 
-// router.delete('/deletepost/:postId',requireLogin,(req,res)=>{
-//     Post.findOne({_id:req.params.postId})
-//     .populate("postedBy","_id")
-//     .exec((err,post)=>{
-//         if(err || !post) {
-//            return res.status(422).json({error:err})
-//         }
-//         if(post.postedBy._id.toString()===req.user._id.toString()) {
-//             post.remove()
-//             .then(result=>{
-//                 res.json(result);
-//             })
-//             .catch(err=>{
-//                 console.log(err);
-//             })
-//         }
-//     })
-// })
-
-router.put('/deletecomment/:id',requireLogin,(req,res)=>{
-   
-    Post.findByIdAndUpdate(req.body.postId,
-        {
-            $pull:{comments:{_id:req.params.id}}
-        },
-        {
-            new:true
-        })
-        .populate("postedBy","_id name")
-        .exec((err,result)=>{
-        if(err){
-          return res.status(422).json({error:err});
-        }else{
-            res.json(result);
+router.delete('/deletepost/:postId',requireLogin,(req,res)=>{
+    Post.findOne({_id:req.params.postId})
+    .populate("postedBy","_id")
+    .exec((err,post)=>{
+        if(err || !post) {
+           return res.status(422).json({error:err})
+        }
+        if(post.postedBy._id.toString()===req.user._id.toString()) {
+            post.remove()
+            .then(result=>{
+                res.json(result);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
         }
     })
 })
+
+// router.put('/deletecomment/:id',requireLogin,(req,res)=>{
+   
+//     Post.findByIdAndUpdate(req.body.postId,
+//         {
+//             $pull:{comments:{_id:req.params.id}}
+//         },
+//         {
+//             new:true
+//         })
+//         .populate("postedBy","_id name")
+//         .exec((err,result)=>{
+//         if(err){
+//           return res.status(422).json({error:err});
+//         }else{
+//             res.json(result);
+//         }
+//     })
+// })
 
 
 
