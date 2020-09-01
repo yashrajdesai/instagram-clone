@@ -50,13 +50,19 @@ const NavBar = ()=>{
     }
 
     return(
-        <nav>
+      <div>
+    <nav>
     <div className="nav-wrapper white">
       <Link to={state?"/":"/login"} className="brand-logo left">Instagram</Link>
-      <ul id="nav-mobile" className="right">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+      <ul className="right hide-on-med-and-down">
           {renderList()}
       </ul>
     </div>
+    </nav>
+    <ul className="sidenav hide-on-large-only" id="mobile-demo">
+            {renderList()}
+        </ul>
         <div id="modal1" className="modal" ref={searchModal} style={{color:"black"}}>
         <div className="modal-content">
         <input type="text" placeholder="search users" value={search} onChange={(e)=>{
@@ -77,9 +83,13 @@ const NavBar = ()=>{
           <button href="#!" className="modal-close waves-effect waves-red btn-flat">Close</button>
         </div>
       </div>
-  </nav>
+      </div>
  )
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, {edge:'right'});
+});
 
 export default NavBar;

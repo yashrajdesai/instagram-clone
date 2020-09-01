@@ -58,7 +58,7 @@ const Profile = ()=> {
     
     return (
         
-        <div className="container" style={{maxWidth:"550px",margin:"0px auto"}}>
+        <div className="container" style={{maxWidth:"550px",margin:"0px auto",display:"block"}}>
            <div style={{
               margin:"18px 0px",
                borderBottom:"1px solid grey"
@@ -89,10 +89,10 @@ const Profile = ()=> {
            </div>
         
             <div className="file-field input-field" style={{margin:"10px",height:"70px"}}>
-            <div className="btn #64b5f6 blue darken-1" style={{width:"30%"}}>
-                <span>Update pic</span>
+            <button className="btn #64b5f6 blue darken-1" style={{width:"30%"}}>
+                Update
                 <input type="file" onChange={(e)=>updatePhoto(e.target.files[0])} />
-            </div>
+            </button>
             <div className="file-path-wrapper" style={{paddingTop:"20px"}}>
                 <input className="file-path validate" type="text" />
             </div>

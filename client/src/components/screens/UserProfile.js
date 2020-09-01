@@ -92,6 +92,7 @@ const Profile = ()=> {
               </div>  
               <div>
                   <h4>{userProfile.user.name}</h4>
+                  
                   <div style={{display: "flex",justifyContent: "space-around", width:"108%"}}>
                       {userProfile.posts.length===1?<h6>1 post</h6>:<h6>{userProfile.posts.length} posts</h6> }
                       <h6>{userProfile.user.followers.length} followers </h6>
